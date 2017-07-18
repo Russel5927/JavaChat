@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>新用户注册</title>
+        <meta charset="UTF-8">
+    </head>
+    <style>
+        #div1{
+            border-bottom:2px solid;
+            border-bottom-color: dodgerblue;
+        }
+</style>
+<script>
+     function checkname() {
+        //校验name
+        var username = document.getElementById("username").value;
+        var sp1 = document.getElementById("sp");
+        var img1 = document.getElementById("img");
+        var reg = /^[A-Za-z][0-9]{4,16}$/;
+        if (reg.test(username)!=true) {
+            img1.src = "err.png"
+            img1.setAttribute("width", "18px");
+            img1.setAttribute("height", "18px");
+            sp1.innerHTML = "格式不正确";
+            sp1.setAttribute("style", "color:red");
+            //document.getElementById("username").focus();
+        } else {
+            //sp1.innerHTML="正确"
+            //sp1.setAttribute("style","color:green");
+            //去掉sp的内容
+            sp1.innerHTML = "";
+            img1.src = "yes.png"
+            img1.setAttribute("width", "18px");
+            img1.setAttribute("height", "18px");
+        }
+    }
+    function tiponf() {
+        var username = document.getElementById("username").value;
+        var sp1 = document.getElementById("sp");
+        if (username.length > 6) {
+            sp1.innerHTML = "";
+        } else {
+            var sp1 = document.getElementById("sp");
+            sp1.innerHTML = "用户名需要大于6个字母";
+            sp1.setAttribute("style", "color:gray;");
+        }
+
+    }
+    function IsSimple(){
+        var password=document.getElementById("password");
+        var reg=/^[A-Za-z0-9]{4,10}$/;//正则表达式测试密码
+        var sp1 = document.getElementById("sp1")
+        var img1=document.getElementById("img1");
+        if(reg.test(password.value)==false){
+            //如果密码太简单就错误
+            sp1.innerHTML="以字母或者数字开头，长度在6~18之间，只能包含字母、数字和下划线";
+            sp1.setAttribute("style", "color:red;");
+            //设置图片大小
+            img1.src="err.png";
+            img1.setAttribute("width", "18px");
+            img1.setAttribute("height", "18px");
+        }else{
+            sp1.innerHTML="";
+            //设置图片大小
+            img1.src="yes.png";
+            img1.setAttribute("width", "18px");
+            img1.setAttribute("height", "18px");
+
+        }
+    }
+    function checkpasswd(){
+        var password=document.getElementsByName("password");
+        //校验两次密码是否正确,sp1代表密码，sp2代表确认密码，img同理
+        var sp2 = document.getElementById("sp2")
+        var img2 = document.getElementById("img2");
+        var reg=/^[a-zA-Z0123456789]\w{5,17}$/;//正则表达式测试密码
+
+        if(password[0].value==password[1].value&&reg.test(password[0].value)==true){
+            //如果两次密码一样就正确图标
+            img2.src = "yes.png"
+            img2.setAttribute("width", "18px");
+            img2.setAttribute("height", "18px");
+            return true;
+        }else{
+            img2.src = "err.png"
+            img2.setAttribute("width", "18px");
+            img2.setAttribute("height", "18px");
+            return false;
+        }
+
+    }
+    function checkemail(){
+        var email=document.getElementById("email");
+        var reg=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        var sp1 = document.getElementById("sp3");
+        var img1=document.getElementById("img3");
+        if(reg.test(email.value)==false){
+            sp1.innerHTML="错误邮箱格式";
+            img1.src="err.png";
+            img1.setAttribute("width", "18px");
+            img1.setAttribute("height", "18px");
+        }else{
+            sp1.innerHTML="";
+            img1.src="yes.png";
+            img1.setAttribute("width", "18px");
+            img1.setAttribute("height", "18px");
+        }
+    }
+    function checkphone(){
+        var email=document.getElementById("cellphone");
+        var reg=/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+        var sp1 = document.getElementById("sp4");
+        var img1=document.getElementById("img4");
+        if(reg.test(email.value)==false){
+            sp1.innerHTML="错误手机号码格式";
+            img1.src="err.png";
+            img1.setAttribute("width", "18px");
+            img1.setAttribute("height", "18px");
+        }else{
+            sp1.innerHTML="";
+            img1.src="yes.png";
+            img1.setAttribute("width", "18px");
+            img1.setAttribute("height", "18px");
+        }
+    }
+    function checkBirth(){
+        var birth = document.getElementById("birth").value;
+        var sp1 = document.getElementById("sp5");
+        var img1 = document.getElementById("img5");
+        var reg = /(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)/;
+        if (reg.test(birth)!=true) {
+            img1.src = "err.png"
+            img1.setAttribute("width", "18px");
+            img1.setAttribute("height", "18px");
+            sp1.innerHTML = "格式不正确";
+            sp1.setAttribute("style", "color:red");
+        } else {
+            //去掉sp的内容
+            sp1.innerHTML = "";
+            img1.src = "yes.png"
+            img1.setAttribute("width", "18px");
+            img1.setAttribute("height", "18px");
+        }
+    }
+</script>
+    <body>
+        <div id="div1">
+            <img src="logo.gif" alt=""><br/>
+            <h2 style="color:dodgerblue">新用户注册</h2>
+        </div>
+        <div>
+            <form action="" method="post">
+               <table>
+                   <tr>
+                        <td align="right">用户名：</td>
+                        <td><input type="text" name="username" id="username" onblur="checkname()" onfocus="tiponf()" /><span id="sp"></span><img src="" alt="" id="img"></td>
+                   </tr>
+                    <tr>
+                        <td align="right"> 密码：</td>
+                        <td><input type="password" name="password" id="password"  onblur="IsSimple()"/><span id="sp1"></span><img src="" alt="" id="img1"></td>
+                   </tr>
+                    <tr>
+                        <td align="right">确认密码：</td>
+                        <td><input type="password" name="password" id="password" onblur="checkpasswd()"/><span id="sp2"></span><img src="" alt="" id="img2"></td>
+                   </tr>
+                    <tr>
+                        <td align="right">电子邮箱：</td>
+                        <td><input type="text" name="email" id="email" onblur="checkemail()"/><span id="sp3"></span><img src="" alt="" id="img3"></td>
+                   </tr>
+                    <tr>
+                        <td align="right">手机号码：</td>
+                        <td><input type="text" name="cellphone" id="cellphone" onblur="checkphone()"/><span id="sp4"></span><img src="" alt="" id="img4"></td>
+                   </tr>
+                    <tr>
+                        <td align="right">生日：</td>
+                        <td><input type="text" id="birth" name="birth" onblur="checkBirth()"><span id="sp5"></span><img src="" alt="" id="img5"></td>
+                   </tr>
+                    <tr>
+                        <td align="right"></td>
+                        <td><input type="submit" id="regster" name="regster" value="注册完成" style="background-color:dodgerblue; font-size:x-large; color:white;"></td>
+                   </tr>
+               </table>
+                
+             </form>
+        </div>
+    </body>
+</html>
